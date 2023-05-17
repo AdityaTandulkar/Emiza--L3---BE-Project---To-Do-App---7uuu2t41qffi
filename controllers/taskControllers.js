@@ -119,7 +119,6 @@ const updateTask = async (req, res) => {
         if(heading) update.heading = heading;
         if(description) update.description = description;
         if(status) update.status = status;
-        console.log(update);
 
         const task = await Tasks.findOneAndUpdate({_id : task_id}, update, {new : true});
 
