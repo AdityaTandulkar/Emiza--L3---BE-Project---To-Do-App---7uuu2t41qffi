@@ -60,6 +60,10 @@ async function isowner(req, res, next) {
             return res.status(404).json({ message: 'Invalid token', status: 'fail' });
         }
 
+        if (!task_id.match(/^[0-9a-fA-F]{24}$/)) {
+            return res.status(404).json({ message: 'Given task does not exist', status: 'fail' });
+        }
+        
         const task = await Tasks.findById(task_id);
         if(!task) return res.status(404).json({ message: 'Given task does not exist', status: 'fail' });
 
@@ -70,7 +74,7 @@ async function isowner(req, res, next) {
 
     } catch (err) {
         return res.status(400).json({
-            // error : err.message,
+            error : err.message,
             status: "error",
             message: "Unable to check"
         })
