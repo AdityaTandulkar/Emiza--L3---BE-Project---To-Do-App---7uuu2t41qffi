@@ -67,7 +67,7 @@ async function isowner(req, res, next) {
         const task = await Tasks.findById(task_id);
         if(!task) return res.status(404).json({ message: 'Given task does not exist', status: 'fail' });
 
-        if(tokenData.userId !== task.creator_id) return res.status(403).json({ message: 'Access Denied' , status: 'fail' });
+        if(tokenData.userId != task.creator_id) return res.status(403).json({ message: 'Access Denied' , status: 'fail' });
 
         next();
 
