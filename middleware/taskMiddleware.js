@@ -51,6 +51,7 @@ async function isowner(req, res, next) {
         
         //Write your code here.
         const {task_id, token} = req.body;
+        console.log(task_id);
         let tokenData;
         try{
             tokenData = jwt.verify(token, JWT_SECRET);
@@ -69,7 +70,7 @@ async function isowner(req, res, next) {
 
     } catch (err) {
         return res.status(400).json({
-            error : err.message,
+            // error : err.message,
             status: "error",
             message: "Unable to check"
         })
