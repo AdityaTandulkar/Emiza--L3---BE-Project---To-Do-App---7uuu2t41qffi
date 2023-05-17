@@ -121,7 +121,7 @@ const updateTask = async (req, res) => {
         if(status) update.status = status;
         console.log(update);
 
-        const task = await Tasks.findOneAndUpdate({_id : task_id}, update);
+        const task = await Tasks.findOneAndUpdate({_id : task_id}, update, {new : true});
 
         return res.status(200).json({status : "success", data : task});
     }
