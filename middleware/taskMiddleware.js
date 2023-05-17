@@ -61,9 +61,9 @@ async function isowner(req, res, next) {
         }
 
         if (!task_id.match(/^[0-9a-fA-F]{24}$/)) {
-            return res.status(404).json({ message: 'Given task does not exist', status: 'fail' });
+            return res.status(404).json({ message: 'Given task doesnot exist', status: 'fail' });
         }
-        
+
         const task = await Tasks.findById(task_id);
         if(!task) return res.status(404).json({ message: 'Given task does not exist', status: 'fail' });
 
