@@ -52,6 +52,7 @@ async function isowner(req, res, next) {
         //Write your code here.
         const {task_id, token} = req.body;
         console.log(task_id);
+        console.log(token);
         let tokenData;
         try{
             tokenData = jwt.verify(token, JWT_SECRET);
